@@ -1,0 +1,44 @@
+import java.io.*;
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Digite um número inteiro: ");
+      //Adicione try e catch;
+        try{
+          //criando arquivo;
+            FileWriter fileWriter = new FileWriter("numeros.txt");
+          //objeto para escrever no arquivo;
+          FileWriter fw = new FileWriter("numeros.txt");
+          BufferedWriter bw = new BufferedWriter(fw);
+          //escrever conteudo do arquivo;
+          bw.write("10, 20, 30, 40, 50");
+          //quebra de linha;
+          bw.newLine();
+          bw.write("60, 70, 80, 90, 100");
+          //fechar arquivo;
+          bw.close();
+          System.out.println("Conteúdo do arquivo:");
+          //ler arquivo;
+          FileReader fr = new FileReader ("numeros.txt");
+          BufferedReader br = new BufferedReader(fr);
+          //lista para salvar o arquivo;
+          List<String> lista = new ArrayList<>();
+          //ler conteudo linha a linha usando while;
+          while (br.ready ()){
+            String linha = br.readLine();
+            lista.add(linha);
+          }
+          //imprimir conteudo da lista;
+          for (String linha : lista){
+            System.out.println(linha);
+          }
+        }
+      catch (IOException e){
+        System.out.println("Erro ao ler o arquivo");
+      }
+    }
+}
+
+          
